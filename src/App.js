@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Form from "./components/Form";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      input: "",
+    };
+  }
+  handleChange(e) {
+    this.setState({
+      input: e.target.value,
+    });
+  }
+  render() {
+    const { input } = this.state;
+    return (
+      <div>
+        <Form handleChange={this.handleChange} />
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <div>
+          {input ? `Showing results for  ${input}` : "Please search a movie 🙂"}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
