@@ -47,6 +47,7 @@ class App extends Component {
             ? `Showing results for  "${movie}"`
             : "Please search a movie 🙂"}
         </div>
+
         <MovieList movieData={movieData} />
       </div>
     );
