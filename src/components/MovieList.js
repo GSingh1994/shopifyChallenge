@@ -6,7 +6,10 @@ import NomineeList from "./NomineeList";
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
   const handleClick = (movie) => {
-    addNominee((oldList) => [...oldList, movie.Title]);
+    addNominee((oldList) => [
+      ...oldList,
+      { title: movie.Title, key: uniqid(), poster: movie.Poster },
+    ]);
   };
   return (
     <div>
