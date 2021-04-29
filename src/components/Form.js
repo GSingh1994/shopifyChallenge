@@ -1,7 +1,7 @@
-const Form = ({ handleChange }) => {
+const Form = ({ handleChange, handleSubmit }) => {
   return (
     <div>
-      <form action="get">
+      <form action="get" onSubmit={handleSubmit}>
         <input type="text" onChange={handleChange} />
       </form>
     </div>
