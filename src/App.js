@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-// import "./App.css";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
 import CssBaseline from "@material-ui/core/CssBaseline"; //To normalize app
+import { Container } from "@material-ui/core";
 
 class App extends Component {
   constructor(props) {
@@ -40,18 +40,20 @@ class App extends Component {
     return (
       <>
         <CssBaseline />
-        <Form
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        <Container maxWidth="lg">
+          <Form
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
 
-        <div>
-          {movie.length
-            ? `Showing results for  "${movie}"`
-            : "Please search a movie 🙂"}
-        </div>
+          <div>
+            {movie.length
+              ? `Showing results for  "${movie}"`
+              : "Please search a movie 🙂"}
+          </div>
 
-        <MovieList movieData={movieData} />
+          <MovieList movieData={movieData} />
+        </Container>
       </>
     );
   }
