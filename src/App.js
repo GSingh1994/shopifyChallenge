@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
+// import "./App.css";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
+import CssBaseline from "@material-ui/core/CssBaseline"; //To normalize app
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +38,8 @@ class App extends Component {
   render() {
     const { movie, movieData } = this.state;
     return (
-      <div>
+      <>
+        <CssBaseline />
         <Form
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
@@ -49,7 +52,7 @@ class App extends Component {
         </div>
 
         <MovieList movieData={movieData} />
-      </div>
+      </>
     );
   }
 }

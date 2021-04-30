@@ -1,5 +1,4 @@
 const NomineeList = ({ nomineeList }) => {
-  console.log(nomineeList);
   return (
     <div>
       {nomineeList.map((movie) => (
