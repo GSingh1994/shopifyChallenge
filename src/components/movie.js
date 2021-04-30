@@ -7,20 +7,23 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
+  root: {
+    padding: 4,
+    transition: "all 0.3s ease",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.08)",
+    },
+  },
   media: {
-    height: 255,
-    width: 255,
+    minHeight: 255,
+    minWidth: 255,
   },
   title: {
     fontWeight: "bold",
-    marginTop: 10,
-  },
-  year: {
-    // marginLeft: "auto",
+    padding: "10px 5px",
   },
   btn: {
     margin: "0 auto",
-    marginTop: 10,
   },
 });
 const Movie = ({ title, year, poster, handleClick }) => {
@@ -28,19 +31,26 @@ const Movie = ({ title, year, poster, handleClick }) => {
   return (
     <>
       <Card>
-        <CardContent>
-          <CardMedia className={classes.media} title={poster} image={poster} />
+        <CardContent
+          hover="true"
+          className={classes.root}
+          style={{ paddingBottom: 3 }}
+        >
+          <CardMedia className={classes.media} image={poster} />
+
           <Typography
             align="center"
+            noWrap
             className={classes.title}
             variant="body1"
-            color="initial"
           >
             {title}
           </Typography>
+
           <Typography align="center" variant="body2" color="textSecondary">
             {year}
           </Typography>
+
           <CardActions>
             <Button
               className={classes.btn}

@@ -4,6 +4,7 @@ import uniqid from "uniqid";
 import NomineeList from "./NomineeList";
 import Grid from "@material-ui/core/Grid";
 import { Container } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
@@ -16,10 +17,10 @@ const MovieList = ({ movieData }) => {
   return (
     <>
       <Container maxWidth="lg">
-        <Grid container spacing={2} alignContent="space-between">
+        <Grid container spacing={2}>
           {movieData ? (
             movieData.map((movie) => (
-              <Grid key={uniqid()} item xs={6} sm={4} lg={3}>
+              <Grid key={uniqid()} item xs={12} sm={6} lg={3}>
                 <Movie
                   title={movie.Title}
                   year={movie.Year}
@@ -29,7 +30,9 @@ const MovieList = ({ movieData }) => {
               </Grid>
             ))
           ) : (
-            <div>No results found 🤔</div>
+            <Typography variant="h6" color="secondary" align="center">
+              No results found 🤔
+            </Typography>
           )}
         </Grid>
       </Container>
