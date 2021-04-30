@@ -1,8 +1,6 @@
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
@@ -33,7 +31,7 @@ const Form = ({ handleChange, handleSubmit }) => {
           fullWidth={true}
           placeholder="search for a movie"
           onChange={handleChange}
-          variant="filled"
+          variant="outlined"
         />
       </Box>
     </>

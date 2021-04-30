@@ -30,7 +30,7 @@ const Movie = ({ title, year, poster, handleClick }) => {
   const classes = useStyles();
   return (
     <>
-      <Card>
+      <Card elevation={4}>
         <CardContent
           hover="true"
           className={classes.root}

@@ -11,13 +11,13 @@ const MovieList = ({ movieData }) => {
   const handleClick = (movie) => {
     addNominee((oldList) => [
       ...oldList,
-      { title: movie.Title, key: uniqid(), poster: movie.Poster },
+      { title: movie.Title, key: uniqid() },
     ]);
   };
   return (
     <>
       <Container maxWidth="lg">
-        <Grid container spacing={2}>
+        <Grid container spacing={4}>
           {movieData ? (
             movieData.map((movie) => (
               <Grid key={uniqid()} item xs={12} sm={6} lg={3}>

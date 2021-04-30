@@ -39,7 +39,7 @@ class App extends Component {
       .catch((err) => console.log(err));
   }
   render() {
-    const darkTheme = createMuiTheme({
+    const theme = createMuiTheme({
       palette: {
         type: "dark",
       },
@@ -47,7 +47,7 @@ class App extends Component {
     const { movie, movieData } = this.state;
     return (
       <>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={theme}>
           <CssBaseline />
           <Container maxWidth="lg">
             <Form
@@ -66,7 +66,7 @@ class App extends Component {
                 : "Please search a movie 🙂"}
             </Typography>
 
-            <MovieList movieData={movieData} />
+            <MovieList movieData={movieData} theme={theme} />
           </Container>
         </ThemeProvider>
       </>

@@ -1,35 +1,49 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Box from "@material-ui/core/Box";
-import Toolbar from "@material-ui/core/Toolbar";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles({
-  drawer: {
-    width: "6rem",
-    marginTop: "3rem",
-    zIndex: 0,
+import Paper from "@material-ui/core/Paper";
+
+const useStyles = makeStyles((theme) => ({
+  card: {
+    margin: "1rem",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    color: "black",
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "0.3rem",
   },
-});
+  drawer: {
+    width: "20rem",
+    zIndex: 0,
+    paddingTop: "8rem",
+  },
+}));
 const NomineeList = ({ nomineeList }) => {
   const classes = useStyles();
   return (
-    <Box>
-      <Drawer className={classes.drawer} variant="permanent" anchor="right">
-        <Toolbar />
-        <List>
-          {nomineeList.map((movie) => (
-            <ListItem key={movie.key}>
-              <ListItemText>{movie.title}</ListItemText>
-            </ListItem>
-          ))}
-        </List>
+    <>
+      <Drawer
+        classes={{ paper: classes.drawer }}
+        variant="permanent"
+        anchor="right"
+      >
+        <Typography variant="h5" color="initial" align="center">
+          Nominees
+        </Typography>
+        {nomineeList.map((movie) => (
+          <Card className={classes.card} key={movie.key}>
+            <CardContent>{movie.title}</CardContent>
+            <Button color="secondary" size="small">
+              Remove
+            </Button>
+          </Card>
+        ))}
       </Drawer>
-    </Box>
+    </>
   );
 };
 
