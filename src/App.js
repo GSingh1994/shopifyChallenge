@@ -26,7 +26,7 @@ class App extends Component {
     e.preventDefault();
   }
   fetchData(movie) {
-    fetch(`http://www.omdbapi.com/?s=${movie}&type=movie&apikey=dd2c16f0`)
+    fetch(`https://www.omdbapi.com/?s=${movie}&type=movie&apikey=dd2c16f0`)
       .then((result) => result.json())
       .then((data) =>
         this.setState({
