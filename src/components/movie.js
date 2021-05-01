@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     margin: "0 auto",
   },
 });
-const Movie = ({ title, year, poster, handleClick }) => {
+const Movie = ({ title, year, poster, handleClick, buttonState }) => {
   const classes = useStyles();
   return (
     <>
@@ -54,9 +54,10 @@ const Movie = ({ title, year, poster, handleClick }) => {
           <CardActions>
             <Button
               className={classes.btn}
-              onClick={handleClick}
+              onClick={handleClick} //Add movie to nomination list
               variant="contained"
               color="primary"
+              disabled={buttonState ? true : false}
             >
               Nominate
             </Button>

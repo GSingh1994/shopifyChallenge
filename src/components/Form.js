@@ -20,11 +20,11 @@ const Form = ({ handleChange, handleSubmit }) => {
   return (
     <>
       <Box className={classes.root}>
-        <AppBar position="fixed" color="primary">
+        {/* <AppBar position="fixed" color="primary">
           <Typography className={classes.title} variant="h4" align="center">
             The Shoppies: Movie awards for entrepreneurs
           </Typography>
-        </AppBar>
+        </AppBar> */}
         <TextField
           className={classes.input}
           onSubmit={handleSubmit}

@@ -55,7 +55,7 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
             />
 
-            <Typography
+            {/* <Typography
               variant="h6"
               color="initial"
               align="center"
@@ -64,7 +64,7 @@ class App extends Component {
               {movieData
                 ? `Showing results for  "${movie}"`
                 : "Please search a movie 🙂"}
-            </Typography>
+            </Typography> */}
 
             <MovieList movieData={movieData} theme={theme} />
           </Container>
