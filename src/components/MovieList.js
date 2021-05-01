@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
-  // const [buttonState, setButtonState] = useState(false);
+  const [buttonState, setButtonState] = useState(false);
   const [snackBar, openSnackBar] = useState(false);
 
   const handleClick = (movie) => {
-    // setButtonState(!buttonState);
+    setButtonState(!buttonState);
     openSnackBar(true);
     nomineeList.length < 5 //Show banner when user reached 5 nominations
       ? addNominee((oldList) => [
@@ -34,8 +34,7 @@ const MovieList = ({ movieData }) => {
   };
 
   const handleDelete = (id) => {
-    //remove nominees matching id
-    addNominee((oldList) => oldList.filter((item) => item.key !== id));
+    addNominee((oldList) => oldList.filter((item) => item.key !== id)); //remove nominees matching id
     // nomineeList.length <= 5 ? setButtonState(false) : console.log("null");
   };
 
@@ -69,7 +68,7 @@ const MovieList = ({ movieData }) => {
                     year={movie.Year}
                     poster={movie.Poster}
                     handleClick={() => handleClick(movie)}
-                    // buttonState={buttonState}
+                    buttonState={buttonState}
                     // buttonState={banner} //Disable all buttons if banner is true
                   />
                 </Grid>

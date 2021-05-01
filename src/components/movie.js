@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
   },
 }));
-const Movie = ({ title, year, poster, handleClick }) => {
+const Movie = ({ title, year, poster, handleClick, buttonState }) => {
   const [button, setButton] = useState(false);
   const classes = useStyles();
   return (
