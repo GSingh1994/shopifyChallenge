@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
@@ -6,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: 4,
     transition: "all 0.3s ease",
@@ -25,8 +27,9 @@ const useStyles = makeStyles({
   btn: {
     margin: "0 auto",
   },
-});
-const Movie = ({ title, year, poster, handleClick, buttonState }) => {
+}));
+const Movie = ({ title, year, poster, handleClick }) => {
+  const [button, setButton] = useState(false);
   const classes = useStyles();
   return (
     <>
@@ -57,7 +60,7 @@ const Movie = ({ title, year, poster, handleClick, buttonState }) => {
               onClick={handleClick} //Add movie to nomination list
               variant="contained"
               color="primary"
-              disabled={buttonState ? true : false}
+              // disabled={buttonState ? true : false}
             >
               Nominate
             </Button>

@@ -54,18 +54,6 @@ class App extends Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
             />
-
-            {/* <Typography
-              variant="h6"
-              color="initial"
-              align="center"
-              style={{ marginBottom: 10 }}
-            >
-              {movieData
-                ? `Showing results for  "${movie}"`
-                : "Please search a movie 🙂"}
-            </Typography> */}
-
             <MovieList movieData={movieData} theme={theme} />
           </Container>
         </ThemeProvider>
@@ -75,3 +63,16 @@ class App extends Component {
 }
 
 export default App;
+
+{
+  /* <Typography
+              variant="h6"
+              color="initial"
+              align="center"
+              style={{ marginBottom: 10 }}
+            >
+              {movieData
+                ? `Showing results for  "${movie}"`
+                : "Please search a movie 🙂"}
+            </Typography> */
+}

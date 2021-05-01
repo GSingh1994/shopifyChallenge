@@ -8,22 +8,35 @@ import Typography from "@material-ui/core/Typography";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.down("xs")]: {
+      width: "23rem",
+    },
+  },
+}));
+
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
-  const [banner, setBanner] = useState(false);
+  // const [buttonState, setButtonState] = useState(false);
   const [snackBar, openSnackBar] = useState(false);
 
   const handleClick = (movie) => {
+    // setButtonState(!buttonState);
     openSnackBar(true);
     nomineeList.length < 5 //Show banner when user reached 5 nominations
       ? addNominee((oldList) => [
           ...oldList,
           { title: movie.Title, key: uniqid() },
         ])
-      : setBanner(!banner);
+      : openSnackBar(false);
   };
+
   const handleDelete = (id) => {
+    //remove nominees matching id
     addNominee((oldList) => oldList.filter((item) => item.key !== id));
+    // nomineeList.length <= 5 ? setButtonState(false) : console.log("null");
   };
 
   const handleClose = (event, reason) => {
@@ -33,11 +46,11 @@ const MovieList = ({ movieData }) => {
     }
     openSnackBar(false);
   };
-
+  const classes = useStyles();
   return (
     <>
-      <Container maxWidth="lg">
-        {banner ? (
+      <Container className={classes.root} maxWidth="lg">
+        {nomineeList.length === 5 ? (
           <Typography variant="h3" align="center" gutterBottom color="initial">
             You've nominated 5 movies
           </Typography>
@@ -56,7 +69,8 @@ const MovieList = ({ movieData }) => {
                     year={movie.Year}
                     poster={movie.Poster}
                     handleClick={() => handleClick(movie)}
-                    buttonState={banner} //Disable all buttons if banner is true
+                    // buttonState={buttonState}
+                    // buttonState={banner} //Disable all buttons if banner is true
                   />
                 </Grid>
               ))
