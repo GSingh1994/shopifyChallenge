@@ -5,7 +5,7 @@ import MovieList from "./components/MovieList";
 import CssBaseline from "@material-ui/core/CssBaseline"; //To normalize app
 import { Container } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class App extends Component {
         type: "dark",
       },
     });
-    const { movie, movieData } = this.state;
+    const { movieData } = this.state;
     return (
       <>
         <ThemeProvider theme={theme}>

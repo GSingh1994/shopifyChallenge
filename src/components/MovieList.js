@@ -22,6 +22,9 @@ const MovieList = ({ movieData }) => {
         ])
       : setBanner(!banner);
   };
+  const handleDelete = (id) => {
+    addNominee((oldList) => oldList.filter((item) => item.key !== id));
+  };
 
   const handleClose = (event, reason) => {
     //Close and reset snackbar
@@ -72,7 +75,7 @@ const MovieList = ({ movieData }) => {
         </Alert>
       </Snackbar>
 
-      <NomineeList nomineeList={nomineeList} />
+      <NomineeList nomineeList={nomineeList} handleDelete={handleDelete} />
     </>
   );
 };

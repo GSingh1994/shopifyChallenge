@@ -5,8 +5,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Paper from "@material-ui/core/Paper";
-
 const useStyles = makeStyles((theme) => ({
   card: {
     margin: "1rem",
@@ -22,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "8rem",
   },
 }));
-const NomineeList = ({ nomineeList }) => {
+const NomineeList = ({ nomineeList, handleDelete }) => {
   const classes = useStyles();
   return (
     <>
@@ -37,7 +35,11 @@ const NomineeList = ({ nomineeList }) => {
         {nomineeList.map((movie) => (
           <Card className={classes.card} key={movie.key}>
             <CardContent>{movie.title}</CardContent>
-            <Button color="secondary" size="small">
+            <Button
+              onClick={() => handleDelete(movie.key)}
+              color="secondary"
+              size="small"
+            >
               Remove
             </Button>
           </Card>
