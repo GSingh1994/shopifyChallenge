@@ -1,5 +1,6 @@
-import TextField from "@material-ui/core/TextField";
 import { useStyles } from "../styles";
+
+import TextField from "@material-ui/core/TextField";
 
 const Form = ({ handleChange }) => {
   const classes = useStyles();

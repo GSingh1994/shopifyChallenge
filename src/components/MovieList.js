@@ -1,7 +1,8 @@
+import { useStyles } from "../styles";
+
 import { useState } from "react";
 import Movie from "../components/Movie";
 import NomineeList from "./NomineeList";
-import { useStyles } from "../styles";
 import { Grid, Typography, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import uniqId from "uniqid";

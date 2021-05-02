@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { useStyles, theme } from "./styles";
+import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
 import uniqId from "uniqid";
