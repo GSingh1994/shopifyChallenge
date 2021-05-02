@@ -1,23 +1,6 @@
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
+import { useStyles } from "../styles";
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-import ListItemText from "@material-ui/core/ListItemText";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.down("xs")]: {
-      position: "static",
-    },
-    position: "absolute",
-    right: "2rem",
-    top: "10rem",
-    width: "25rem",
-    backgroundColor: "#424242",
-    borderRadius: "3px",
-  },
-}));
 
 const NomineeList = ({ nomineeList, handleDelete }) => {
   const classes = useStyles();
@@ -25,7 +8,7 @@ const NomineeList = ({ nomineeList, handleDelete }) => {
   return (
     <>
       <List
-        className={classes.root}
+        className={classes.nomineeList}
         component="nav"
         aria-label="main mailbox folders"
       >

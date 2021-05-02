@@ -1,32 +1,15 @@
 import { useState } from "react";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { useStyles } from "../styles";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: 4,
-    transition: "all 0.3s ease",
-    "&:hover": {
-      backgroundColor: "rgba(255, 255, 255, 0.08)",
-    },
-  },
-  media: {
-    minHeight: 255,
-    minWidth: 255,
-  },
-  title: {
-    fontWeight: "bold",
-    padding: "10px 5px",
-  },
-  btn: {
-    margin: "0 auto",
-  },
-}));
+import {
+  Card,
+  CardMedia,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+} from "@material-ui/core";
+
 const Movie = ({ title, year, poster, handleClick, buttonState }) => {
   const [button, setButton] = useState(false);
   const classes = useStyles();
@@ -35,15 +18,15 @@ const Movie = ({ title, year, poster, handleClick, buttonState }) => {
       <Card elevation={4}>
         <CardContent
           hover="true"
-          className={classes.root}
+          className={classes.cardContent}
           style={{ paddingBottom: 3 }}
         >
-          <CardMedia className={classes.media} image={poster} />
+          <CardMedia className={classes.cardMedia} image={poster} />
 
           <Typography
             align="center"
             noWrap
-            className={classes.title}
+            className={classes.cardTitle}
             variant="body1"
           >
             {title}
@@ -55,11 +38,11 @@ const Movie = ({ title, year, poster, handleClick, buttonState }) => {
 
           <CardActions>
             <Button
-              className={classes.btn}
+              className={classes.addNomineeBtn}
               onClick={handleClick} //Add movie to nomination list
               variant="contained"
               color="primary"
-              // disabled={buttonState ? true : false}
+              // disabled={buttonState }
             >
               Nominate
             </Button>

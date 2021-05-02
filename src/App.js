@@ -1,25 +1,13 @@
 import { useState, useEffect } from "react";
+import { useStyles, theme } from "./styles";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
-import CssBaseline from "@material-ui/core/CssBaseline"; //To normalize app
-import { Container } from "@material-ui/core";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-// import Typography from "@material-ui/core/Typography";
-
-import { makeStyles } from "@material-ui/core/styles";
-const theme = createMuiTheme({
-  palette: {
-    type: "dark",
-  },
-});
-const useStyles = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.down("xs")]: {
-      margin: 0,
-    },
-    marginLeft: "4rem",
-  },
-}));
+import {
+  CssBaseline,
+  Container,
+  ThemeProvider,
+  Typography,
+} from "@material-ui/core";
 
 const App = () => {
   const [movie, setMovie] = useState("");
@@ -44,7 +32,7 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container className={classes.root} maxWidth="lg">
+        <Container className={classes.appContainer} maxWidth="lg">
           <Form handleChange={(e) => setMovie(e.target.value)} />
           <MovieList movieData={movieData} />
         </Container>

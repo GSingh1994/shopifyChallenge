@@ -1,21 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Movie from "../components/movie";
-import uniqid from "uniqid";
 import NomineeList from "./NomineeList";
-import Grid from "@material-ui/core/Grid";
-import { Container } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Snackbar from "@material-ui/core/Snackbar";
+import { useStyles } from "../styles";
+import { Container, Grid, Typography, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
-import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.down("xs")]: {
-      width: "23rem",
-    },
-  },
-}));
+// import uniqId from 'uniqid'
 
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
@@ -23,14 +12,20 @@ const MovieList = ({ movieData }) => {
   const [snackBar, openSnackBar] = useState(false);
 
   const handleClick = (movie) => {
-    setButtonState(!buttonState);
+    // setButtonState(!buttonState);
     openSnackBar(true);
     nomineeList.length < 5 //Show banner when user reached 5 nominations
       ? addNominee((oldList) => [
           ...oldList,
-          { title: movie.Title, key: uniqid() },
+          { title: movie.Title, key: movie.imdbID },
         ])
       : openSnackBar(false);
+    // console.log(nomineeList.map((li) => li.key === movie.imdbID));
+    nomineeList.map((li) =>
+      li.key === movie.imdbID
+        ? setButtonState(!buttonState)
+        : console.log("null")
+    );
   };
 
   const handleDelete = (id) => {
@@ -48,7 +43,7 @@ const MovieList = ({ movieData }) => {
   const classes = useStyles();
   return (
     <>
-      <Container className={classes.root} maxWidth="lg">
+      <Container className={classes.movieList} maxWidth="lg">
         {nomineeList.length === 5 ? (
           <Typography variant="h3" align="center" gutterBottom color="initial">
             You've nominated 5 movies
@@ -62,13 +57,15 @@ const MovieList = ({ movieData }) => {
         <Grid container spacing={4}>
           {movieData
             ? movieData.map((movie) => (
-                <Grid key={uniqid()} item xs={12} sm={6} lg={3}>
+                <Grid key={movie.imdbID} item xs={12} sm={6} lg={3}>
                   <Movie
                     title={movie.Title}
                     year={movie.Year}
                     poster={movie.Poster}
                     handleClick={() => handleClick(movie)}
-                    buttonState={buttonState}
+                    buttonState={nomineeList.map(
+                      (li) => li.key === movie.imdbID
+                    )}
                     // buttonState={banner} //Disable all buttons if banner is true
                   />
                 </Grid>
