@@ -10,7 +10,7 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   appContainer: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("lg")]: {
       padding: "0 10rem",
     },
   },
@@ -21,11 +21,7 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginBottom: theme.spacing(2),
   },
-  movieList: {
-    // [theme.breakpoints.down("xs")]: {
-    //   width: "23rem",
-    // },
-  },
+  movieList: {},
   banner: {
     marginBottom: "1rem",
     height: "4rem",
@@ -36,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "rgba(255, 255, 255, 0.08)",
     },
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       display: "flex",
       justifyContent: "space-between",
     },
@@ -45,9 +41,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       display: "none",
     },
-    // paddingTop: "56.25%",
-    height: 345,
-    marginBottom: theme.spacing(2),
+    paddingTop: "86.25%",
   },
   cardTitle: {
     [theme.breakpoints.down("xs")]: {
@@ -56,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     fontWeight: "bold",
     padding: "0 9px",
-    // height: "4rem",
+    marginTop: 9,
   },
   smallCard: {
     [theme.breakpoints.down("xs")]: {
@@ -68,25 +62,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 auto",
   },
   nomineeList: {
-    // [theme.breakpoints.down("xs")]: {
-    //   position: "static",
-    // },
-    // position: "absolute",
-    // right: "3.5rem",
-    // top: "15rem",
-    // width: "25rem",
-    // backgroundColor: "#424242",
-    // borderRadius: "3px",
-    // height: "100%",
     [theme.breakpoints.down("xs")]: {
       paddingTop: "2rem",
     },
+    [theme.breakpoints.up("md")]: {
+      width: "50%",
+    },
   },
   movieGrid: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       display: "flex",
     },
   },
 }));
 
 export { useStyles, theme };
+
+// [theme.breakpoints.down("xs")]: {
+//   position: "static",
+// },
+// position: "absolute",
+// right: "3.5rem",
+// top: "15rem",
+// width: "25rem",
+// backgroundColor: "#424242",
+// borderRadius: "3px",
+// height: "100%",

@@ -57,7 +57,7 @@ const MovieList = ({ movieData }) => {
           <Grid container spacing={4}>
             {movieData
               ? movieData.map((movie) => (
-                  <Grid key={uniqId()} item xs={12} sm={4} md={3} lg={4}>
+                  <Grid key={uniqId()} item xs={12} sm={6} md={6} lg={4}>
                     <Movie
                       title={movie.Title}
                       year={movie.Year}
