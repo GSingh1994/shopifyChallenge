@@ -8,9 +8,9 @@ const Form = ({ handleChange }) => {
       <TextField
         className={classes.textField}
         onSubmit={(e) => e.preventDefault}
-        fullWidth={true}
-        placeholder="search for a movie"
         onChange={handleChange}
+        fullWidth
+        placeholder="search for a movie"
         variant="outlined"
       />
     </>

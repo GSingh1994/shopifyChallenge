@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useStyles, theme } from "./styles";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
+import uniqId from "uniqid";
+
 import {
   CssBaseline,
   Container,
@@ -32,7 +34,20 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container className={classes.appContainer} maxWidth="lg">
+        <Container className={classes.appContainer} maxWidth="xl">
+          <div className={classes.header}>
+            <Typography
+              gutterBottom
+              align="center"
+              variant="h2"
+              color="initial"
+            >
+              Shoppies
+            </Typography>
+            <Typography variant="h6" align="center" color="initial">
+              Please nominate movies you like for the next Shoppies award! 🏆
+            </Typography>
+          </div>
           <Form handleChange={(e) => setMovie(e.target.value)} />
           <MovieList movieData={movieData} />
         </Container>

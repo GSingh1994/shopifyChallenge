@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useStyles } from "../styles";
 
 import {
@@ -10,8 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const Movie = ({ title, year, poster, handleClick, buttonState }) => {
-  const [button, setButton] = useState(false);
+const Movie = ({ title, year, poster, handleClick, disabled }) => {
   const classes = useStyles();
   return (
     <>
@@ -22,19 +21,20 @@ const Movie = ({ title, year, poster, handleClick, buttonState }) => {
           style={{ paddingBottom: 3 }}
         >
           <CardMedia className={classes.cardMedia} image={poster} />
-
-          <Typography
-            align="center"
-            noWrap
-            className={classes.cardTitle}
-            variant="body1"
-          >
-            {title}
-          </Typography>
-
-          <Typography align="center" variant="body2" color="textSecondary">
-            {year}
-          </Typography>
+          <div className={classes.smallCard}>
+            <Typography
+              gutterBottom
+              align="center"
+              // noWrap
+              className={classes.cardTitle}
+              variant="subtitle1"
+            >
+              {title}
+            </Typography>
+            <Typography align="center" variant="body2" color="textSecondary">
+              {year}
+            </Typography>
+          </div>
 
           <CardActions>
             <Button
@@ -42,7 +42,8 @@ const Movie = ({ title, year, poster, handleClick, buttonState }) => {
               onClick={handleClick} //Add movie to nomination list
               variant="contained"
               color="primary"
-              // disabled={buttonState }
+              size="small"
+              // disabled={disabled.lenght ? true : false}
             >
               Nominate
             </Button>
