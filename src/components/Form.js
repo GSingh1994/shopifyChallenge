@@ -13,6 +13,7 @@ const Form = ({ handleChange }) => {
         fullWidth
         placeholder="search for a movie"
         variant="outlined"
+        autoFocus
       />
     </>
   );

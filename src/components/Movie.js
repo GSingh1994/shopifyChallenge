@@ -1,4 +1,3 @@
-// import { useState } from "react";
 import { useStyles } from "../styles";
 
 import {
@@ -10,8 +9,15 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const Movie = ({ title, year, poster, handleClick, disabled }) => {
+const Movie = ({ title, year, poster, handleClick, clickedMovie }) => {
   const classes = useStyles();
+
+  let disabled = false;
+  if (clickedMovie && clickedMovie.title === title) {
+    //if clicked movie's title matches title of this card, button become disabled
+    disabled = true;
+  }
+
   return (
     <>
       <Card elevation={4}>
@@ -43,7 +49,7 @@ const Movie = ({ title, year, poster, handleClick, disabled }) => {
               variant="contained"
               color="primary"
               size="small"
-              // disabled={disabled.lenght ? true : false}
+              disabled={disabled}
             >
               Nominate
             </Button>

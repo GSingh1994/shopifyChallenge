@@ -1,5 +1,4 @@
 import { useStyles } from "../styles";
-
 import { useState } from "react";
 import Movie from "../components/Movie";
 import NomineeList from "./NomineeList";
@@ -9,36 +8,33 @@ import uniqId from "uniqid";
 
 const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
-  const [disabled, setDisabled] = useState(false);
-  // const [snackBar, openSnackBar] = useState(false);
+  const [snackBar, openSnackBar] = useState(false);
 
-  const handleClick = (movie) => {
-    // nomineeList.length < 5 //Show banner when user reached 5 nominations
-    //   ?
-    addNominee((oldList) => [
-      ...oldList,
-      { title: movie.Title, key: movie.imdbID },
-    ]);
-    //   : openSnackBar(false);
-    // setDisabled(!disabled);
-    // openSnackBar(true);
+  const handleClick = (movie, i) => {
+    if (nomineeList.length < 5) {
+      addNominee((oldList) => [
+        ...oldList,
+        { title: movie.Title, key: uniqId(), id: movie.imdbID },
+      ]);
+      openSnackBar(true);
+    }
   };
+
+  //remove nominees matching id
   const handleDelete = (id) => {
-    addNominee((oldList) => oldList.filter((item) => item.key !== id)); //remove nominees matching id
+    addNominee((oldList) => oldList.filter((item) => item.key !== id));
   };
 
-  // const handleClose = (reason) => {
-  //   //Close and reset snackbar
-  //   if (reason === "clickaway") {
-  //     return;
-  //   }
-  //   openSnackBar(false);
-  // };
+  //if clicked movie's title matches any title on nomination list,return
+  const clickedMovie = (movie) => {
+    return nomineeList.find((n) => n.title === movie.Title);
+  };
+
   const classes = useStyles();
   return (
     <>
       <div className={classes.movieList}>
-        {/* <div className={classes.banner}>
+        <div className={classes.banner}>
           {nomineeList.length === 5 ? (
             <Typography
               variant="h3"
@@ -53,17 +49,18 @@ const MovieList = ({ movieData }) => {
               No results found 🤔
             </Typography>
           ) : null}
-        </div> */}
+        </div>
         <div className={classes.movieGrid}>
           <Grid container spacing={4}>
             {movieData
-              ? movieData.map((movie) => (
+              ? movieData.map((movie, i) => (
                   <Grid key={uniqId()} item xs={12} sm={6} md={6} lg={4}>
                     <Movie
                       title={movie.Title}
                       year={movie.Year}
                       poster={movie.Poster}
-                      handleClick={() => handleClick(movie)}
+                      handleClick={() => handleClick(movie, i)}
+                      clickedMovie={clickedMovie(movie)}
                     />
                   </Grid>
                 ))
@@ -73,23 +70,21 @@ const MovieList = ({ movieData }) => {
         </div>
       </div>
 
-      {/* <Snackbar open={snackBar} onClose={handleClose} autoHideDuration={2000}>
+      <Snackbar
+        open={snackBar}
+        onClose={() => openSnackBar(false)}
+        autoHideDuration={2000}
+      >
         <Alert
-          onClose={handleClose}
+          onClose={() => openSnackBar(false)}
           severity="success"
           elevation={6}
-          variant="filled"
         >
           Movie added for nomination
         </Alert>
-      </Snackbar> */}
+      </Snackbar>
     </>
   );
 };
 
 export default MovieList;
-
-// setButtonState(!buttonState);
-// buttonState={banner} //Disable all buttons if banner is true
-// nomineeList.length <= 5 ? setButtonState(false) : console.log("null");
-// console.log(nomineeList.map((li) => li.key === movie.imdbID));
