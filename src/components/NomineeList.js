@@ -7,12 +7,12 @@ import {
   Container,
   Typography,
   Divider,
+  Fade,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
-
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 const NomineeList = ({ nomineeList, handleDelete }) => {
   const classes = useStyles();
-
   return (
     <>
       <Container maxWidth="xs" className={classes.nomineeList}>
@@ -22,12 +22,14 @@ const NomineeList = ({ nomineeList, handleDelete }) => {
         <Divider />
         <List component="nav">
           {nomineeList.map((movie) => (
-            <ListItem divider button key={movie.key}>
-              <ListItemText primary={movie.title} />
-              <ListItemIcon>
-                <DeleteIcon onClick={() => handleDelete(movie.key)} />
-              </ListItemIcon>
-            </ListItem>
+            <Fade in key={movie.key}>
+              <ListItem divider button>
+                <ListItemText primary={movie.title} />
+                <ListItemIcon className={classes.removeBtn}>
+                  <RemoveCircleIcon onClick={() => handleDelete(movie.key)} />
+                </ListItemIcon>
+              </ListItem>
+            </Fade>
           ))}
         </List>
       </Container>

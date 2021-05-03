@@ -2,7 +2,13 @@ import { useStyles } from "../styles";
 import { useState } from "react";
 import Movie from "../components/Movie";
 import NomineeList from "./NomineeList";
-import { Grid, Typography, Snackbar } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  Snackbar,
+  useMediaQuery,
+  Grow,
+} from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import uniqId from "uniqid";
 
@@ -10,14 +16,14 @@ const MovieList = ({ movieData }) => {
   const [nomineeList, addNominee] = useState([]);
   const [snackBar, openSnackBar] = useState(false);
 
-  const handleClick = (movie, i) => {
+  const handleClick = (movie) => {
     if (nomineeList.length < 5) {
       addNominee((oldList) => [
         ...oldList,
         { title: movie.Title, key: uniqId(), id: movie.imdbID },
       ]);
-      openSnackBar(true);
     }
+    openSnackBar(true);
   };
 
   //remove nominees matching id
@@ -31,35 +37,38 @@ const MovieList = ({ movieData }) => {
   };
 
   const classes = useStyles();
+  const smallScreen = useMediaQuery("(max-width:600px)");
   return (
     <>
       <div className={classes.movieList}>
-        <div className={classes.banner}>
-          {nomineeList.length === 5 ? (
-            <Typography
-              variant="h3"
-              align="center"
-              gutterBottom
-              color="initial"
-            >
-              You've nominated 5 movies
-            </Typography>
-          ) : !movieData ? (
-            <Typography variant="h6" color="secondary" align="center">
-              No results found 🤔
-            </Typography>
-          ) : null}
-        </div>
+        <Grow in>
+          <div className={classes.banner}>
+            {nomineeList.length === 5 ? (
+              <Typography
+                variant={smallScreen ? "h5" : "h4"}
+                align="center"
+                gutterBottom
+                color="initial"
+              >
+                You've nominated 5 movies
+              </Typography>
+            ) : !movieData ? (
+              <Typography variant="h6" color="secondary" align="center">
+                No results found 🤔
+              </Typography>
+            ) : null}
+          </div>
+        </Grow>
         <div className={classes.movieGrid}>
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             {movieData
-              ? movieData.map((movie, i) => (
-                  <Grid key={uniqId()} item xs={12} sm={6} md={6} lg={4}>
+              ? movieData.map((movie) => (
+                  <Grid item key={uniqId()} xs={12} sm={6} md={6} lg={4}>
                     <Movie
                       title={movie.Title}
                       year={movie.Year}
                       poster={movie.Poster}
-                      handleClick={() => handleClick(movie, i)}
+                      handleClick={() => handleClick(movie)}
                       clickedMovie={clickedMovie(movie)}
                     />
                   </Grid>
@@ -73,15 +82,26 @@ const MovieList = ({ movieData }) => {
       <Snackbar
         open={snackBar}
         onClose={() => openSnackBar(false)}
-        autoHideDuration={2000}
+        autoHideDuration={1000}
       >
-        <Alert
-          onClose={() => openSnackBar(false)}
-          severity="success"
-          elevation={6}
-        >
-          Movie added for nomination
-        </Alert>
+        {nomineeList.length < 5 ? (
+          <Alert
+            onClose={() => openSnackBar(false)}
+            severity="success"
+            elevation={6}
+          >
+            Movie added for nomination
+          </Alert>
+        ) : (
+          <Alert
+            onClose={() => openSnackBar(false)}
+            severity="error"
+            elevation={6}
+            // variant="filled"
+          >
+            Your nominee list is full
+          </Alert>
+        )}
       </Snackbar>
     </>
   );

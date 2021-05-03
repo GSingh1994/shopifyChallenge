@@ -44,7 +44,8 @@ const App = () => {
               Shoppies
             </Typography>
             <Typography variant="h6" align="center" color="initial">
-              Please nominate movies you like for the next Shoppies award! 🏆
+              Please nominate 5 movies of your choice for the next Shoppies
+              award! 🏆
             </Typography>
           </div>
           <Form handleChange={(e) => setMovie(e.target.value)} />

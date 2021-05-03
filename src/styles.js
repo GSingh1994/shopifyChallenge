@@ -16,7 +16,7 @@ const useStyles = makeStyles(
       },
     },
     header: {
-      margin: "3rem",
+      margin: "2rem 0",
       diplay: "flex",
     },
     textField: {
@@ -24,8 +24,11 @@ const useStyles = makeStyles(
     },
     movieList: {},
     banner: {
-      marginBottom: "1rem",
-      height: "4rem",
+      marginBottom: "2rem",
+      [theme.breakpoints.down("sm")]: {
+        height: "2rem",
+        marginBottom: "1rem",
+      },
     },
     cardContent: {
       padding: 4,
@@ -62,9 +65,17 @@ const useStyles = makeStyles(
     addNomineeBtn: {
       margin: "0 auto",
     },
+    removeBtn: {
+      "&:hover": {
+        color: "red",
+      },
+      minWidth: 0,
+      transition: "all 0.3s ease",
+    },
     nomineeList: {
       [theme.breakpoints.down("xs")]: {
         paddingTop: "2rem",
+        margin: 0,
       },
       [theme.breakpoints.up("md")]: {
         width: "50%",
