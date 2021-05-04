@@ -1,5 +1,5 @@
 import { useStyles } from "../styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Movie from "../components/Movie";
 import NomineeList from "./NomineeList";
 import {
@@ -25,6 +25,17 @@ const MovieList = ({ movieData }) => {
     }
     openSnackBar(true);
   };
+
+  useEffect(() => {
+    //getting saved local storage on first render
+    let savedList = JSON.parse(localStorage.getItem("movies" || "[]"));
+    addNominee(savedList);
+  }, []);
+
+  useEffect(() => {
+    //saving nominee list to local storage
+    localStorage.setItem("movies", JSON.stringify(nomineeList));
+  }, [snackBar]);
 
   //remove nominees matching id
   const handleDelete = (id) => {
@@ -63,7 +74,7 @@ const MovieList = ({ movieData }) => {
           <Grid container spacing={2}>
             {movieData
               ? movieData.map((movie) => (
-                  <Grid item key={uniqId()} xs={12} sm={6} md={6} lg={4}>
+                  <Grid item key={uniqId()} xs={6} sm={4} md={6} lg={3}>
                     <Movie
                       title={movie.Title}
                       year={movie.Year}
@@ -97,7 +108,6 @@ const MovieList = ({ movieData }) => {
             onClose={() => openSnackBar(false)}
             severity="error"
             elevation={6}
-            // variant="filled"
           >
             Your nominee list is full
           </Alert>

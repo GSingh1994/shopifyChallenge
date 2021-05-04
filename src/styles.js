@@ -36,31 +36,17 @@ const useStyles = makeStyles(
       "&:hover": {
         backgroundColor: "rgba(255, 255, 255, 0.08)",
       },
-      [theme.breakpoints.down("xs")]: {
-        display: "flex",
-        justifyContent: "space-between",
-      },
     },
     cardMedia: {
-      [theme.breakpoints.down("xs")]: {
-        display: "none",
-      },
-      paddingTop: "86.25%",
+      paddingTop: "100%",
     },
     cardTitle: {
       [theme.breakpoints.down("xs")]: {
         margin: 0,
-        fontSize: "0.8rem",
       },
       fontWeight: "bold",
       padding: "0 9px",
       marginTop: 9,
-    },
-    smallCard: {
-      [theme.breakpoints.down("xs")]: {
-        display: "flex",
-        alignItems: "center",
-      },
     },
     addNomineeBtn: {
       margin: "0 auto",
@@ -75,7 +61,6 @@ const useStyles = makeStyles(
     nomineeList: {
       [theme.breakpoints.down("xs")]: {
         paddingTop: "2rem",
-        margin: 0,
       },
       [theme.breakpoints.up("md")]: {
         width: "50%",

@@ -27,11 +27,11 @@ const Movie = ({ title, year, poster, handleClick, clickedMovie }) => {
           style={{ paddingBottom: 3 }}
         >
           <CardMedia className={classes.cardMedia} image={poster} />
-          <div className={classes.smallCard}>
+          <div>
             <Typography
               gutterBottom
               align="center"
-              // noWrap
+              noWrap
               className={classes.cardTitle}
               variant="subtitle1"
             >
