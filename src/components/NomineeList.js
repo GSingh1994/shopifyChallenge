@@ -9,7 +9,6 @@ import {
   Divider,
   Fade,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 const NomineeList = ({ nomineeList, handleDelete }) => {
   const classes = useStyles();

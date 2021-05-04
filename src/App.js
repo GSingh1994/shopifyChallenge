@@ -2,6 +2,7 @@ import { useStyles, theme } from "./styles";
 import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
+import DefaultList from "./DefaultList";
 
 import {
   CssBaseline,
@@ -15,6 +16,10 @@ const App = () => {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
+    setMovieData(DefaultList);
+  }, []);
+
+  useEffect(() => {
     if (!movie) return;
 
     const fetchData = async () => {
@@ -24,7 +29,6 @@ const App = () => {
       const data = await response.json();
       setMovieData(data.Search);
     };
-
     fetchData();
   }, [movie]);
 
