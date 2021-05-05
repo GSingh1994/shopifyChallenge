@@ -35,7 +35,7 @@ const MovieList = ({ movieData }) => {
   useEffect(() => {
     //saving nominee list to local storage
     localStorage.setItem("movies", JSON.stringify(nomineeList));
-  }, [snackBar]);
+  }, [nomineeList]);
 
   //remove nominees matching id
   const handleDelete = (id) => {
@@ -61,7 +61,7 @@ const MovieList = ({ movieData }) => {
                 gutterBottom
                 color="initial"
               >
-                You've nominated 5 movies
+                Thank you for nominating 🎉
               </Typography>
             ) : !movieData ? (
               <Typography variant="h6" color="secondary" align="center">
