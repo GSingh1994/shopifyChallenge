@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import MovieList from "./components/MovieList";
 import DefaultList from "./DefaultList";
+import Footer from "./components/Footer";
 
 import {
   CssBaseline,
@@ -54,6 +55,7 @@ const App = () => {
           </div>
           <Form handleChange={(e) => setMovie(e.target.value)} />
           <MovieList movieData={movieData} />
+          <Footer />
         </Container>
       </ThemeProvider>
     </>

@@ -12,15 +12,28 @@ const useStyles = makeStyles(
   (theme) => ({
     appContainer: {
       [theme.breakpoints.up("lg")]: {
-        padding: "0 10rem",
+        padding: "0 10rem 4rem 10rem",
+        position: "relative",
+        minHeight: "100vh",
       },
     },
     header: {
       margin: "2rem 0",
       diplay: "flex",
     },
+    footer: {
+      padding: "0.5rem",
+      textAlign: "center",
+      backgroundColor: "black",
+      // height: "60px",
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      width: "100%",
+    },
     textField: {
       marginBottom: theme.spacing(2),
+      textAlign: "center",
     },
     movieList: {},
     banner: {

@@ -47,6 +47,22 @@ const DefaultList = [
     Poster:
       "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
   },
+  {
+    Title: "Tenet",
+    Year: "2020",
+    imdbID: "tt6723592",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BYzg0NGM2NjAtNmIxOC00MDJmLTg5ZmYtYzM0MTE4NWE2NzlhXkEyXkFqcGdeQXVyMTA4NjE0NjEy._V1_SX300.jpg",
+  },
+  {
+    Title: "Wonder Woman 1984",
+    Year: "2020",
+    imdbID: "tt7126948",
+    Type: "movie",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BYTlhNzJjYzYtNGU3My00ZDI5LTgzZDUtYzllYjU1ZmU0YTgwXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_SX300.jpg",
+  },
 ];
 
 export default DefaultList;
