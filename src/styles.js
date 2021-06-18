@@ -13,7 +13,6 @@ const useStyles = makeStyles(
     appContainer: {
       [theme.breakpoints.up("lg")]: {
         padding: "0 10rem 5rem 10rem",
-        position: "relative",
         minHeight: "100vh",
       },
     },
@@ -29,7 +28,9 @@ const useStyles = makeStyles(
         position: "absolute",
         bottom: 0,
         left: 0,
+        right: 0,
         width: "100%",
+        padding: "0.6rem",
       },
     },
     textField: {
