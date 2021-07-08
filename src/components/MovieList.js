@@ -29,7 +29,9 @@ const MovieList = ({ movieData }) => {
   useEffect(() => {
     //getting saved local storage on first render
     let savedList = JSON.parse(localStorage.getItem("movies" || "[]"));
-    addNominee(savedList);
+    if (savedList) {
+      addNominee(savedList);
+    }
   }, []);
 
   useEffect(() => {
