@@ -25,7 +25,7 @@ const App = () => {
 
     const fetchData = async () => {
       const response = await fetch(
-        `https://www.omdbapi.com/?s=${movie}&type=movie&apikey=dd2c16f0`
+        `https://www.omdbapi.com/?s=${movie}&type=movie&apikey=302119d5`
       );
       const data = await response.json();
       setMovieData(data.Search);
